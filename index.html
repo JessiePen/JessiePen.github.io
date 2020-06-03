@@ -98,7 +98,7 @@
 
   <div class="article-tweet-content post-inner-html">
     
-      <p>Code the world.</p>
+      <p>Program the mind, code the world.</p>
 
     
   </div>
@@ -133,7 +133,7 @@
       </header>
       <div class="article-entry post-inner-html">
         
-          <h2 id="This-is-KNN-algorithm"><a href="#This-is-KNN-algorithm" class="headerlink" title="This is KNN algorithm"></a>This is KNN algorithm</h2>
+          <p> This is KNN algorithm</p>
         
       </div>
     </div>
@@ -175,39 +175,6 @@
       <div class="article-entry post-inner-html">
         
           <p>As this is the first blog I have posted, I will try to record the whole process of building it and arranging it on gitHub server step by step.</p>
-<h2 id="Download-node-js"><a href="#Download-node-js" class="headerlink" title="Download node.js"></a><strong>Download node.js</strong></h2><p><img src="/images/version-of-Node.png" alt=""><br>Version of 12.17.0 will be ok.</p>
-<h2 id="Install-hexo"><a href="#Install-hexo" class="headerlink" title="Install hexo"></a><strong>Install hexo</strong></h2><h3 id="1-Install-cnpm"><a href="#1-Install-cnpm" class="headerlink" title="1.  Install cnpm"></a>1.  Install cnpm</h3><p>Type in the following code in your cmd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;register.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h3 id="2-Install-hexo"><a href="#2-Install-hexo" class="headerlink" title="2.  Install hexo"></a>2.  Install hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>Now, our hexo structure has successfully installed. We can create a new folder to store all the sources we need in the blog.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir blog</span><br></pre></td></tr></table></figure>
-<p>Finally, initiate hexo. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
-<p>You can view your blog through the local host by typing in </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<h2 id="Deploy-your-blog-to-GitHub"><a href="#Deploy-your-blog-to-GitHub" class="headerlink" title="Deploy your blog to GitHub"></a><strong>Deploy your blog to GitHub</strong></h2><ol>
-<li><p>Create a new repository in your GitHub.<br><img src="/images/create-repository.png" alt=""><br>Here notice that the repository name should be the same with your user name and with the suffix “.github.io”</p>
-<br>
-</li>
-<li><p>install a cnpm plug-in</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
-<li><p>find your <strong>_config.yml</strong> in your blog folder, modify the <strong>deploy</strong> as following</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy</span><br><span class="line">  type: git &#x2F;&#x2F;NOTICE THERE MUST BE A SPACE BETWEEN THE &quot;:&quot; AND &quot;git&quot;</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="4">
-<li>Deploying<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>Then you can type in your github account and password to deploy your blog onto GitHub.<br>Notice! You may fail during this process as hexo don’t know who you are. You need to configure your identity on Git Bash by </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config -- global user.name&quot;xxx&quot;</span><br><span class="line">git config -- global user.email &quot;xxx@xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>Now, it  will work!!!</p>
-
         
       </div>
     </div>
@@ -219,6 +186,10 @@
       <div class="article-date">
   <time datetime="2020-06-02T13:46:01.000Z" itemprop="datePublished">2020-06-02</time>
 </div>
+      
+        <div class="article-category">
+          <a class="article-category-link" href="/categories/Learning-Notes/">Learning Notes</a>
+        </div>
       
       
     </div>
@@ -295,7 +266,7 @@
   <div class="widget-wrap widget-cate">
     <div class="widget-title"><span>Categories</span></div>
     <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning-Notes/">Learning Notes</a></li></ul>
     </div>
   </div>
 
