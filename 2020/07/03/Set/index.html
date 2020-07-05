@@ -15,8 +15,9 @@
 <meta property="og:description" content="集合Java类库帮助我们在程序设计中实现传统的数据结构。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/07/03/Set/linkedList.jpeg">
+<meta property="og:image" content="http://yoursite.com/2020/07/03/Set/%E6%95%A3%E5%88%97%E8%A1%A8.jpeg">
 <meta property="article:published_time" content="2020-07-03T14:17:55.000Z">
-<meta property="article:modified_time" content="2020-07-03T15:29:16.206Z">
+<meta property="article:modified_time" content="2020-07-05T05:28:19.633Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/07/03/Set/linkedList.jpeg">
@@ -144,6 +145,30 @@
 <ol start="5">
 <li>链表不支持快速访问元素。如果要查看链表中第n个元素，必须要越过n-1个元素，没有捷径可走。尽管如此，LinkedList类还是提供了一个用来访问你的get方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;String&gt; list = ...;</span><br><span class="line">String obj = list.get(n);</span><br></pre></td></tr></table></figure>
 当然，这种方法的效率很低，如果发现了正在使用这种方法，可能对于要解决的问题使用了错误的数据结构。</li>
+</ol>
+<h3 id="2-数组"><a href="#2-数组" class="headerlink" title="2. 数组"></a>2. 数组</h3><p>在Java中有两种访问元素的协议，一种是用迭代器，另一种是用get，set方法随机地访问每个元素。后者不适用于链表，但对数组却很有用。集合类库提供了大家熟悉的ArrayList类，这个类也实现了List接口。ArrayList封装了一个动态再分配的数组对象。</p>
+<h3 id="3-散列集"><a href="#3-散列集" class="headerlink" title="3. 散列集"></a>3. 散列集</h3><p>散列集可以快速查找元素，缺点是无法控制元素的出现次序，适用于不知索引快速查找对象的情况。它们将按照有利于其操作目的的原则组织数据。</p>
+<ol>
+<li>散列表（hash table）</li>
+</ol>
+<p>   散列表为每个对象计算一个整数，称为散列码（hash code）。散列码是由对象的实例域产生的一个整数。具有不同数据域的对象将产生不同散列码。</p>
+<ol start="2">
+<li><p>hashCode 方法</p>
+<p>hashCode方法应该返回一个整型数值（也可为负），并合理的组织实例域的散列码，以便能让各个不同的对象产生的散列码更均匀。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">7</span> * name.hashCode()</span><br><span class="line">        + <span class="number">11</span> * <span class="keyword">new</span> Double(salary).hashCode()</span><br><span class="line">        + <span class="number">13</span> * hireDay.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过还可以做得更好，用Object.hashCode方法来使null安全。如果参数为null，返回0，否则返回对参数调用hashCode的结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Object.hash(name,salary,hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>查找/插入元素<br><img src="%E6%95%A3%E5%88%97%E8%A1%A8.jpeg" alt=""></p>
+<ol>
+<li><p>在Java中散列表用链表数组实现，每个列表称为桶。要想查找表中对象的位置，需要先计算他的散列码，然后与桶的总数取余，所得结果就是保存这个元素的桶的索引。例如，某对象散列码为76268，有128个桶，对象应该保存在第108号桶中。若该桶没有其他元素，则直接插入。若该桶被占满，这种现象称为<strong><em>散列冲突</em></strong>，这时新对象与桶中所有对象比较，查看该对象是否已经存在。</p>
+</li>
+<li><p>桶数设定: 如果大致知道有多少个元素要插入散列表中，就可以设置初始桶数。通常将桶数设置为预计元素个数的 70% ~ 150%。标准类库中，使用的桶数是2的幂，默认值为16。在JavaSE8中，桶满时会从链表变为平衡二叉树。</p>
+</li>
+</ol>
+</li>
+<li><p>HashSet类<br>Java类库提供了一个HashSet类，它实现基于散列表的集，可以用add方法添加元素。contains方法被重新定义，用来快速查看某个元素是否出现在集中。 </p>
+</li>
 </ol>
 
         </div>
