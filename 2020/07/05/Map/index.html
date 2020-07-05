@@ -4,22 +4,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>OSI structure | Jessie Peng</title>
+    <title>Map | Jessie Peng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="发现了一张图可以很好的描述OSI七层结构">
+    <meta name="description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OSI structure">
-<meta property="og:url" content="http://yoursite.com/2020/06/20/OSI/index.html">
+<meta property="og:title" content="Map">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/Map/index.html">
 <meta property="og:site_name" content="Jessie Peng">
-<meta property="og:description" content="发现了一张图可以很好的描述OSI七层结构">
+<meta property="og:description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/20/OSI/osi.png">
-<meta property="article:published_time" content="2020-06-20T14:21:18.000Z">
-<meta property="article:modified_time" content="2020-07-01T14:35:00.848Z">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
+<meta property="article:published_time" content="2020-07-05T05:34:02.000Z">
+<meta property="article:modified_time" content="2020-07-05T07:14:46.207Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/20/OSI/osi.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
 
     
 
@@ -89,7 +89,7 @@
       <section class="inner">
         <section class="inner-main">
           <div class="post">
-    <article id="post-OSI" class="article article-type-post" itemscope
+    <article id="post-Map" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -101,7 +101,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      OSI structure
+      Map
     </h1>
   
 
@@ -110,20 +110,34 @@
 
         <div class="article-more-info article-more-info-post hairline">
             <div class="article-date">
-  <time datetime="2020-06-20T14:21:18.000Z" itemprop="datePublished">2020-06-20</time>
+  <time datetime="2020-07-05T05:34:02.000Z" itemprop="datePublished">2020-07-05</time>
 </div>
             
             <div class="article-category">
-                <a class="article-category-link" href="/categories/Computer-Network/">Computer Network</a>
+                <a class="article-category-link" href="/categories/Java/">Java</a>
             </div>
             
             
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>发现了一张图可以很好的描述OSI七层结构</p>
+            <p>通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键/值对。</p>
 <a id="more"></a>
-<p><img src="osi.png" alt=""></p>
+<ol>
+<li><p>基本映射操作：</p>
+<p>Java类库为映射提供了两个通用的实现：HashMap 和 TreeMap。散列映射对键进行散列，树映射用键的整体顺序对元素进行排序。并将其组成搜索树。下面代码建立了一个散列映射</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, employee&gt; staff = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">//HashMap implements Map</span></span><br><span class="line">Employee harry = <span class="keyword">new</span> Employee(<span class="string">"Harry Hacker"</span>);</span><br><span class="line">staff.put(<span class="string">"987-98-996"</span>,harry);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>检索对象时，必须使用一个键</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String id = <span class="string">"987-98-996"</span>;</span><br><span class="line">e=staff.get(id);</span><br></pre></td></tr></table></figure>
+<p>键值是唯一的，不能对同一个键存放两个值，如果对同一个键两次调用put方法，第二个值会取代第一个值。remove用于映射中删除给定键对应元素，size方法用于返回映射中的元素数。</p>
+</li>
+<li><p>链接散列集与映射<br>LinkedHashSet和LinkedHashMap类用来记住插入元素项的顺序。这样就可以避免在散列表中的项从表面上看是随机排列的。当条目插入到表中时，就会并入到双向链表中。<br><img src="linkedhashset.jpeg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Employee&gt; staff = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">staff.put(<span class="string">"123"</span>,<span class="keyword">new</span> employee(<span class="string">"Amy"</span>))</span><br><span class="line">staff.put(<span class="string">"234"</span>,<span class="keyword">new</span> employee(<span class="string">"Jack"</span>))</span><br><span class="line">staff.put(<span class="string">"345"</span>,<span class="keyword">new</span> employee(<span class="string">"Harry"</span>))</span><br></pre></td></tr></table></figure>
+<p>然后，用staffKeySet().iterator()以下列次序枚举键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">234</span><br><span class="line">345</span><br></pre></td></tr></table></figure>
+<p>并且staff.values().iterator()顺序枚举值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Amy</span><br><span class="line">Jack</span><br><span class="line">Harry</span><br></pre></td></tr></table></figure></li>
+</ol>
 
         </div>
 
@@ -148,19 +162,10 @@
     
 <nav class="article-nav">
   
-    <a href="/2020/07/03/Set/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          Set
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/18/%E5%86%85%E9%83%A8%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/03/Set/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Inner Class</div>
+      <div class="article-nav-title">Set</div>
     </a>
   
 </nav>
@@ -169,15 +174,15 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=OSI structure - Jessie Peng&url=http://yoursite.com/2020/06/20/OSI/">
+            href="https://twitter.com/share?text=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/">
             <div class="n-icon n-icon-twitter"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=OSI structure - Jessie Peng&u=http://yoursite.com/2020/06/20/OSI/">
+            href="https://www.facebook.com/sharer.php?title=Map - Jessie Peng&u=http://yoursite.com/2020/07/05/Map/">
             <div class="n-icon n-icon-facebook"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=OSI structure - Jessie Peng&url=http://yoursite.com/2020/06/20/OSI/&pic=">
+            href="https://service.weibo.com/share/share.php?title=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a>
     </section>
