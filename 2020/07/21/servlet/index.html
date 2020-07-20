@@ -4,22 +4,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>OSI structure | Jessie Peng</title>
+    <title>Servlet 执行原理 | Jessie Peng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="发现了一张图可以很好的描述OSI七层结构">
+    <meta name="description" content="概念 ：运行在服务器端的小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OSI structure">
-<meta property="og:url" content="http://yoursite.com/2020/06/20/OSI/index.html">
+<meta property="og:title" content="Servlet 执行原理">
+<meta property="og:url" content="http://yoursite.com/2020/07/21/servlet/index.html">
 <meta property="og:site_name" content="Jessie Peng">
-<meta property="og:description" content="发现了一张图可以很好的描述OSI七层结构">
+<meta property="og:description" content="概念 ：运行在服务器端的小程序">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/20/OSI/osi.png">
-<meta property="article:published_time" content="2020-06-20T14:21:18.000Z">
-<meta property="article:modified_time" content="2020-07-01T14:35:00.848Z">
+<meta property="article:published_time" content="2020-07-20T22:33:09.000Z">
+<meta property="article:modified_time" content="2020-07-20T22:45:39.822Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Learning Notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/20/OSI/osi.png">
 
     
 
@@ -89,7 +88,7 @@
       <section class="inner">
         <section class="inner-main">
           <div class="post">
-    <article id="post-OSI" class="article article-type-post" itemscope
+    <article id="post-servlet" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -101,7 +100,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      OSI structure
+      Servlet 执行原理
     </h1>
   
 
@@ -110,21 +109,23 @@
 
         <div class="article-more-info article-more-info-post hairline">
             <div class="article-date">
-  <time datetime="2020-06-20T14:21:18.000Z" itemprop="datePublished">2020-06-20</time>
+  <time datetime="2020-07-20T22:33:09.000Z" itemprop="datePublished">2020-07-21</time>
 </div>
             
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/Computer-Network/">Computer Network</a>
-            </div>
             
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning-Notes/" rel="tag">Learning Notes</a></li></ul>
+            </div>
             
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>发现了一张图可以很好的描述OSI七层结构</p>
+            <p>概念 ：运行在服务器端的小程序</p>
 <a id="more"></a>
-<p><img src="osi.png" alt=""></p>
 
+<h3 id="1-创建JavaEE项目"><a href="#1-创建JavaEE项目" class="headerlink" title="1.  创建JavaEE项目"></a>1.  创建JavaEE项目</h3><h3 id="2-定义一个类-，实现servlet接口"><a href="#2-定义一个类-，实现servlet接口" class="headerlink" title="2. 定义一个类 ，实现servlet接口"></a>2. 定义一个类 ，实现servlet接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletDemo1</span> <span class="keyword">implements</span> <span class="title">Servlet</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="3-实现接口中的抽象方法"><a href="#3-实现接口中的抽象方法" class="headerlink" title="3. 实现接口中的抽象方法"></a>3. 实现接口中的抽象方法</h3><h3 id="4-配置servlet"><a href="#4-配置servlet" class="headerlink" title="4. 配置servlet"></a>4. 配置servlet</h3><p>在web.xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>cn.itcast.web.servlet.ServletDemo1<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>//此处插入全类名</span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo1<span class="tag">&lt;/<span class="name">url-parttern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
 
     </div>
@@ -148,19 +149,10 @@
     
 <nav class="article-nav">
   
-    <a href="/2020/06/27/Thread/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          Thread
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/18/%E5%86%85%E9%83%A8%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/12/stream/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Inner Class</div>
+      <div class="article-nav-title">Stream</div>
     </a>
   
 </nav>
@@ -169,15 +161,15 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=OSI structure - Jessie Peng&url=http://yoursite.com/2020/06/20/OSI/">
+            href="https://twitter.com/share?text=Servlet 执行原理 - Jessie Peng&url=http://yoursite.com/2020/07/21/servlet/">
             <div class="n-icon n-icon-twitter"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=OSI structure - Jessie Peng&u=http://yoursite.com/2020/06/20/OSI/">
+            href="https://www.facebook.com/sharer.php?title=Servlet 执行原理 - Jessie Peng&u=http://yoursite.com/2020/07/21/servlet/">
             <div class="n-icon n-icon-facebook"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=OSI structure - Jessie Peng&url=http://yoursite.com/2020/06/20/OSI/&pic=">
+            href="https://service.weibo.com/share/share.php?title=Servlet 执行原理 - Jessie Peng&url=http://yoursite.com/2020/07/21/servlet/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a>
     </section>
