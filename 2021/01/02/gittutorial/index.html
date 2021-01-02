@@ -4,22 +4,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Map | Jessie Peng</title>
+    <title>Git Tutorial | Jessie Peng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
+    <meta name="description" content="This article shows how to install git and post project to github on Mac OS.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map">
-<meta property="og:url" content="http://yoursite.com/2020/07/05/Map/index.html">
+<meta property="og:title" content="Git Tutorial">
+<meta property="og:url" content="http://yoursite.com/2021/01/02/gittutorial/index.html">
 <meta property="og:site_name" content="Jessie Peng">
-<meta property="og:description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
+<meta property="og:description" content="This article shows how to install git and post project to github on Mac OS.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
-<meta property="article:published_time" content="2020-07-05T05:34:02.000Z">
-<meta property="article:modified_time" content="2020-07-05T07:14:46.207Z">
+<meta property="article:published_time" content="2021-01-02T01:52:47.000Z">
+<meta property="article:modified_time" content="2021-01-02T02:14:25.885Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
 
     
 
@@ -89,7 +87,7 @@
       <section class="inner">
         <section class="inner-main">
           <div class="post">
-    <article id="post-Map" class="article article-type-post" itemscope
+    <article id="post-gittutorial" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -101,7 +99,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      Map
+      Git Tutorial
     </h1>
   
 
@@ -110,35 +108,30 @@
 
         <div class="article-more-info article-more-info-post hairline">
             <div class="article-date">
-  <time datetime="2020-07-05T05:34:02.000Z" itemprop="datePublished">2020-07-05</time>
+  <time datetime="2021-01-02T01:52:47.000Z" itemprop="datePublished">2021-01-02</time>
 </div>
             
             <div class="article-category">
-                <a class="article-category-link" href="/categories/Java/">Java</a>
+                <a class="article-category-link" href="/categories/Learning-Notes/">Learning Notes</a>
             </div>
             
             
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键/值对。</p>
+            <p>This article shows how to install git and post project to github on Mac OS.</p>
 <a id="more"></a>
-<ol>
-<li><p>基本映射操作：</p>
-<p>Java类库为映射提供了两个通用的实现：HashMap 和 TreeMap。散列映射对键进行散列，树映射用键的整体顺序对元素进行排序。并将其组成搜索树。下面代码建立了一个散列映射</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, employee&gt; staff = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">//HashMap implements Map</span></span><br><span class="line">Employee harry = <span class="keyword">new</span> Employee(<span class="string">"Harry Hacker"</span>);</span><br><span class="line">staff.put(<span class="string">"987-98-996"</span>,harry);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>检索对象时，必须使用一个键</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String id = <span class="string">"987-98-996"</span>;</span><br><span class="line">e=staff.get(id);</span><br></pre></td></tr></table></figure>
-<p>键值是唯一的，不能对同一个键存放两个值，如果对同一个键两次调用put方法，第二个值会取代第一个值。remove用于映射中删除给定键对应元素，size方法用于返回映射中的元素数。</p>
-</li>
-<li><p>链接散列集与映射<br>LinkedHashSet和LinkedHashMap类用来记住插入元素项的顺序。这样就可以避免在散列表中的项从表面上看是随机排列的。当条目插入到表中时，就会并入到双向链表中。<br><img src="linkedhashset.jpeg" alt=""></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Employee&gt; staff = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">staff.put(<span class="string">"123"</span>,<span class="keyword">new</span> employee(<span class="string">"Amy"</span>))</span><br><span class="line">staff.put(<span class="string">"234"</span>,<span class="keyword">new</span> employee(<span class="string">"Jack"</span>))</span><br><span class="line">staff.put(<span class="string">"345"</span>,<span class="keyword">new</span> employee(<span class="string">"Harry"</span>))</span><br></pre></td></tr></table></figure>
-<p>然后，用staffKeySet().iterator()以下列次序枚举键</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">234</span><br><span class="line">345</span><br></pre></td></tr></table></figure>
-<p>并且staff.values().iterator()顺序枚举值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Amy</span><br><span class="line">Jack</span><br><span class="line">Harry</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h3 id="Install-git"><a href="#Install-git" class="headerlink" title="Install git"></a>Install git</h3><p>On Mac OS, there are several ways to install git. I chose the Xcode to install the package.</p>
+<h3 id="Step-1-Check-if-git-is-already-installed"><a href="#Step-1-Check-if-git-is-already-installed" class="headerlink" title="Step 1 Check if git is already installed."></a>Step 1 Check if git is already installed.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -- version</span><br></pre></td></tr></table></figure>
+<h3 id="Step-2-Download-and-install-git"><a href="#Step-2-Download-and-install-git" class="headerlink" title="Step 2 Download and install git"></a>Step 2 Download and install git</h3><p><a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">https://git-scm.com/download/mac</a></p>
+<h2 id="Step-3-Sign-up-and-create-an-account-on-GitHub"><a href="#Step-3-Sign-up-and-create-an-account-on-GitHub" class="headerlink" title="Step 3 Sign up and create an account on GitHub"></a>Step 3 Sign up and create an account on GitHub</h2><p><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<h2 id="Step-4-Configure-github-email-and-username-to-git"><a href="#Step-4-Configure-github-email-and-username-to-git" class="headerlink" title="Step 4 Configure github email and username to git."></a>Step 4 Configure github email and username to git.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;yourGitHub@email.com&quot;</span><br><span class="line">git config --global user.name &quot;GitHub username&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-5-Create-Get-into-project-file-tracking"><a href="#Step-5-Create-Get-into-project-file-tracking" class="headerlink" title="Step 5 Create/Get into project file - tracking"></a>Step 5 Create/Get into project file - tracking</h2><p>Take the “gitproject” folder on desktop as example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd desktop&#x2F;gitproject</span><br></pre></td></tr></table></figure>
 
+<h2 id="Step-6-Commands"><a href="#Step-6-Commands" class="headerlink" title="Step 6 Commands"></a>Step 6 Commands</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git status</span><br><span class="line">git add (the file you want to upload)</span><br><span class="line">git commit -m &quot;description&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step-7-Deploy-to-gitHub"><a href="#Step-7-Deploy-to-gitHub" class="headerlink" title="Step 7 Deploy to gitHub"></a>Step 7 Deploy to gitHub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;JessiePen&#x2F;GitProject.git  (location of your project)</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
         </div>
 
     </div>
@@ -162,19 +155,10 @@
     
 <nav class="article-nav">
   
-    <a href="/2020/07/12/stream/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          Stream
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/03/Set/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/12/19/Request/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Set</div>
+      <div class="article-nav-title">Servlet&amp;HTTP&amp;Request笔记</div>
     </a>
   
 </nav>
@@ -183,15 +167,15 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/">
+            href="https://twitter.com/share?text=Git Tutorial - Jessie Peng&url=http://yoursite.com/2021/01/02/gittutorial/">
             <div class="n-icon n-icon-twitter"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=Map - Jessie Peng&u=http://yoursite.com/2020/07/05/Map/">
+            href="https://www.facebook.com/sharer.php?title=Git Tutorial - Jessie Peng&u=http://yoursite.com/2021/01/02/gittutorial/">
             <div class="n-icon n-icon-facebook"></div>
         </a>
         <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/&pic=">
+            href="https://service.weibo.com/share/share.php?title=Git Tutorial - Jessie Peng&url=http://yoursite.com/2021/01/02/gittutorial/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a>
     </section>
