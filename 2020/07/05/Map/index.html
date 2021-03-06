@@ -1,321 +1,588 @@
 <!DOCTYPE html>
-<html>
 
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
 <head>
-    <meta charset="utf-8">
-    
-    <title>Map | Jessie Peng</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
-    <meta name="description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Map">
 <meta property="og:url" content="http://yoursite.com/2020/07/05/Map/index.html">
-<meta property="og:site_name" content="Jessie Peng">
+<meta property="og:site_name" content="Jesse Peng">
 <meta property="og:description" content="通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键&#x2F;值对。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
-<meta property="article:published_time" content="2020-07-05T05:34:02.000Z">
+<meta property="article:published_time" content="2020-07-05T12:34:02.000Z">
 <meta property="article:modified_time" content="2020-07-05T07:14:46.207Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Jesse Peng">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/07/05/Map/linkedhashset.jpeg">
 
-    
 
-    
 
-    
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
-    <link rel="stylesheet" href="/dist/build.css?1.2.0">
 
-    <script>
-        window.aomori = {
-            
-        }
-    </script>
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/05/Map/"/>
+
+
+
+
+
+  <title>Map | Jesse Peng</title>
+  
+
+
+
+
+
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  <div class="container">
-  <header class="header">
-    <div class="header-type">
-      
-      <div class="avatar avatar-sm">
-        <img src="/images/avatar.jpg" alt="John Doe">
-      </div>
-      
-      <a href="/">Jessie Peng</a>
-    </div>
-    <div class="header-menu">
-      
-        <a href="/">Home</a>
-      
-        <a href="/archives">Archives</a>
-      
-    </div>
+  
+  
     
-    <div class="header-menu-mobile">
-      <div class="header-menu-mobile-inner" id="mobile-menu-open">
-        <i class="icon icon-menu"></i>
-      </div>
-    </div>
-  </header>
+  
 
-  <div class="header-menu-mobile-menu">
-    <div class="header-menu-mobile-menu-bg"></div>
-    <div class="header-menu-mobile-menu-wrap">
-      <div class="header-menu-mobile-menu-inner">
-        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
-          <i class="icon icon-cross"></i>
-        </div>
-        <div class="header-menu-mobile-menu-list">
-          
-            <a href="/">Home</a>
-          
-            <a href="/archives">Archives</a>
-          
-        </div>
-      </div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jesse Peng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-  <div class="container">
-    <div class="main">
-      <section class="inner">
-        <section class="inner-main">
-          <div class="post">
-    <article id="post-Map" class="article article-type-post" itemscope
-    itemprop="blogPost">
+<nav class="site-nav">
+  
 
-    <div class="article-inner">
-
+  
+    <ul id="menu" class="menu">
+      
         
-
-        
-        <header class="article-header">
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-  
-    <h1 class="article-title" itemprop="name">
-      Map
-    </h1>
-  
-
-        </header>
-        
-
-        <div class="article-more-info article-more-info-post hairline">
-            <div class="article-date">
-  <time datetime="2020-07-05T05:34:02.000Z" itemprop="datePublished">2020-07-05</time>
-</div>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/Java/">Java</a>
-            </div>
-            
-            
-        </div>
-
-        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键/值对。</p>
-<a id="more"></a>
-<ol>
-<li><p>基本映射操作：</p>
-<p>Java类库为映射提供了两个通用的实现：HashMap 和 TreeMap。散列映射对键进行散列，树映射用键的整体顺序对元素进行排序。并将其组成搜索树。下面代码建立了一个散列映射</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, employee&gt; staff = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">//HashMap implements Map</span></span><br><span class="line">Employee harry = <span class="keyword">new</span> Employee(<span class="string">"Harry Hacker"</span>);</span><br><span class="line">staff.put(<span class="string">"987-98-996"</span>,harry);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>检索对象时，必须使用一个键</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String id = <span class="string">"987-98-996"</span>;</span><br><span class="line">e=staff.get(id);</span><br></pre></td></tr></table></figure>
-<p>键值是唯一的，不能对同一个键存放两个值，如果对同一个键两次调用put方法，第二个值会取代第一个值。remove用于映射中删除给定键对应元素，size方法用于返回映射中的元素数。</p>
-</li>
-<li><p>链接散列集与映射<br>LinkedHashSet和LinkedHashMap类用来记住插入元素项的顺序。这样就可以避免在散列表中的项从表面上看是随机排列的。当条目插入到表中时，就会并入到双向链表中。<br><img src="linkedhashset.jpeg" alt=""></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Employee&gt; staff = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">staff.put(<span class="string">"123"</span>,<span class="keyword">new</span> employee(<span class="string">"Amy"</span>))</span><br><span class="line">staff.put(<span class="string">"234"</span>,<span class="keyword">new</span> employee(<span class="string">"Jack"</span>))</span><br><span class="line">staff.put(<span class="string">"345"</span>,<span class="keyword">new</span> employee(<span class="string">"Harry"</span>))</span><br></pre></td></tr></table></figure>
-<p>然后，用staffKeySet().iterator()以下列次序枚举键</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">234</span><br><span class="line">345</span><br></pre></td></tr></table></figure>
-<p>并且staff.values().iterator()顺序枚举值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Amy</span><br><span class="line">Jack</span><br><span class="line">Harry</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-        </div>
-
-    </div>
-
-    
-
-    
-
-    
-
-    
-<div class="article-copyright hairline">
-  <p>
-    本作品采用 <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可。
-  </p>
-</div>
-
-
-    
-
-    
-<nav class="article-nav">
-  
-    <a href="/2020/07/12/stream/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
+            Home
+          </a>
+        </li>
+      
         
-          Stream
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
         
-      </div>
-    </a>
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
   
-  
-    <a href="/2020/07/03/Set/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Set</div>
-    </a>
+
   
 </nav>
 
 
-    <section class="share">
-        <div class="share-title">分享</div>
-        <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/">
-            <div class="n-icon n-icon-twitter"></div>
-        </a>
-        <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=Map - Jessie Peng&u=http://yoursite.com/2020/07/05/Map/">
-            <div class="n-icon n-icon-facebook"></div>
-        </a>
-        <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=Map - Jessie Peng&url=http://yoursite.com/2020/07/05/Map/&pic=">
-            <div class="n-icon n-icon-weibo"></div>
-        </a>
-    </section>
 
-</article>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesse Peng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jumper.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jesse Peng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Map</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-05T13:34:02+01:00">
+                2020-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通常，我们知道某些键的信息，并想要查找与之对应的元素。映射（map）数据结构就是为此设计。映射用来存放键/值对。</p>
+<a id="more"></a>
+<ol>
+<li><p>基本映射操作：</p>
+<p>Java类库为映射提供了两个通用的实现：HashMap 和 TreeMap。散列映射对键进行散列，树映射用键的整体顺序对元素进行排序。并将其组成搜索树。下面代码建立了一个散列映射</p>
+<pre><code class="Java">Map&lt;String, employee&gt; staff = new HashMap&lt;&gt;(); //HashMap implements Map
+Employee harry = new Employee(&quot;Harry Hacker&quot;);
+staff.put(&quot;987-98-996&quot;,harry);
+...</code></pre>
+<p>检索对象时，必须使用一个键</p>
+<pre><code class="Java">String id = &quot;987-98-996&quot;;
+e=staff.get(id);</code></pre>
+<p>键值是唯一的，不能对同一个键存放两个值，如果对同一个键两次调用put方法，第二个值会取代第一个值。remove用于映射中删除给定键对应元素，size方法用于返回映射中的元素数。</p>
+</li>
+<li><p>链接散列集与映射<br>LinkedHashSet和LinkedHashMap类用来记住插入元素项的顺序。这样就可以避免在散列表中的项从表面上看是随机排列的。当条目插入到表中时，就会并入到双向链表中。<br><img src="linkedhashset.jpeg" alt=""></p>
+<pre><code class="Java">Map&lt;String,Employee&gt; staff = new LinkedHashMap&lt;&gt;();
+staff.put(&quot;123&quot;,new employee(&quot;Amy&quot;))
+staff.put(&quot;234&quot;,new employee(&quot;Jack&quot;))
+staff.put(&quot;345&quot;,new employee(&quot;Harry&quot;))</code></pre>
+<p>然后，用staffKeySet().iterator()以下列次序枚举键</p>
+<pre><code>123
+234
+345</code></pre><p>并且staff.values().iterator()顺序枚举值</p>
+<pre><code>Amy
+Jack
+Harry</code></pre></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/03/Set/" rel="next" title="Set">
+                <i class="fa fa-chevron-left"></i> Set
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/12/stream/" rel="prev" title="Stream">
+                Stream <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
-</div>
-        </section>
-      </section>
-      <aside class="sidebar">
-        <div class="widget">
+
+          </div>
+          
+
+
           
 
   
-  <div class="widget-wrap">
-    <div class="widget-inner">
-      <div class="toc post-toc-html"></div>
-    </div>
-  </div>
-
-
-  
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Categories</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Network/">Computer Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-structure/">Data structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning-Notes/">Learning Notes</a></li></ul>
-    </div>
-  </div>
-
-
-
-  
-  <div class="widget-wrap">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning-Notes/" rel="tag">Learning Notes</a></li></ul>
-    </div>
-  </div>
-
-
-
-  
-  <div class="widget-wrap widget-recent-posts">
-    <div class="widget-title"><span>Recent Posts</span></div>
-    <div class="widget-inner">
-      <ul>
-        
-          <li>
-            <a href="/2021/03/05/Principle/">Hash Principle</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/04/command/">VS Code keyboard command</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/02/gittutorial/">Git Tutorial</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/19/Request/">Servlet&amp;HTTP&amp;Request笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/21/servlet/">Servlet 执行原理</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-  <div class="widget-wrap widget-archive">
-    <div class="widget-title"><span>Archive</span></div>
-    <div class="widget-inner">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
-    </div>
-  </div>
 
 
 
         </div>
-        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
-      </aside>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-info">
-            <span>&copy; 2013 - 2021 Jessie Peng</span>
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/jumper.jpeg"
+                alt="Jesse Peng" />
+            
+              <p class="site-author-name" itemprop="name">Jesse Peng</p>
+              <p class="site-description motion-element" itemprop="description">Do not go gentle into that good night</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
 
+          </nav>
 
+          
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JessiePen" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Y.Peng1998@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/pengyuhe7" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
 
+          
+          
 
+          
+          
 
-
-
-  <a class="social" href="/">
-    <span class="n-icon n-icon-github"></span>
-  </a>
+          
 
         </div>
-        <div class="footer-powered">
-            <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Aomori</a> Theme · Powered By Hexo
-        </div>
+      </section>
+
+      
+
+      
+
     </div>
-</footer>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jesse Peng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
-<script src="/dist/build.js?1.2.0.js"></script>
-
-
-<script src="/dist/custom.js?1.2.0.js"></script>
+        
 
 
 
@@ -323,6 +590,166 @@
 
 
 
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

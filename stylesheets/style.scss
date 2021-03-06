@@ -1,48 +1,54 @@
 
 /* Font */
-
-@font-face {
-    font-family: 'oswald';
-    src: url('../fonts/oswald-regular-webfont.woff2');
-}
-
-/* Colors */
-
-$color-light: #119da4;
-$color-main: #13505b;
-$color-white: #ccc;
-$color-black: #040404;
-$color-type: #3c4859;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 
 /* 样式重置 */
 
 body {
-    background-color: #f0f3f6;
-    color: #666;
-    font: 14px/1 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--color-bg);
+    font: 14px/1 PingFangSC,'Microsoft Yahei', Microsoft Sans Serif, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
 a {
-    color: $color-type;
+    color: var(--color-type);
     transition: all 0.2s;
 }
 
 a,
 a:visited {
-    color: $color-type;
+    color: var(--color-type);
 }
 
 a:hover {
-    color: $color-light;
+    color: var(--color-light);
+}
+
+button {
+    outline: none;
+    border-width: 0;
+    background: var(--color-type);
+}
+
+img:not([src]):not([srcset]) {
+    visibility: hidden;
+}
+
+.clearfix::after {
+    clear: both;
+    content: '';
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
 }
 
 /* 1px 下划线 */
 
 .hairline::after {
-    border: 0 solid #ebedf0;
+    border: 0 solid var(--color-white);
     border-bottom-width: 1px;
     bottom: -50%;
     box-sizing: border-box;
@@ -77,31 +83,99 @@ a:hover {
         line-height: 80px;
         padding-left: 5px;
 
-        .avatar {
+        &-inner {
+            display: flex;
+        }
+
+        &-avatar {
             margin-right: 10px;
         }
 
-        a {
-            color: $color-type;
-            font-family: 'oswald', sans-serif;
+        &-title {
+            color: var(--color-type);
+            font-family: 'Oswald', sans-serif;
+        }
+
+        &-page-title {
+            font-size: 18px;
+            font-weight: 300;
+            margin-left: 10px;
+        }
+
+        .typed-cursor {
+            font-family: 'Oswald', sans-serif;
+            margin-left: 5px;
+            padding-bottom: 5px;
         }
     }
 
     .header-menu {
-        line-height: 40px;
-        padding-top: 40px;
+        align-items: center;
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        
+        &-inner {
+            line-height: 40px;
+            margin-right: 5px;
+            display: flex;
 
-        a {
-            border-radius: 5px;
-            color: $color-type;
-            font-size: 14px;
-            padding: 10px;
+            a {
+                margin: 0 20px 0 0;
+                color: var(--color-type);
+                font-size: 14px;
+                letter-spacing: 0;
+            }
+
+            a:hover,
+            a:active {
+                letter-spacing: 1px;
+            }
+            
+            a::after,
+            a::before {
+                backface-visibility: hidden;
+                border: 1px solid rgba(#fff, 0);
+                bottom: 0;
+                content: ' ';
+                display: block;
+                margin: 0 auto;
+                position: relative;
+                transition: all 280ms ease-in-out;
+                width: 0;
+            }
+            
+            a:hover::after,
+            a:hover::before {
+                backface-visibility: hidden;
+                border-color: var(--color-type);
+                transition: width 350ms ease-in-out;
+                width: 80%;
+            }
+            
+            a:hover::before {
+                bottom: auto;
+                top: 0;
+                width: 80%;
+            }
+
         }
 
-        a:hover {
-            background: #3c4859;
-            color: #fefefe;
+        &-social {
+            display: flex;
+
+            a {
+                align-items: center;
+                display: flex;
+                fill: var(--color-type);
+                padding: 0 5px;
+            }
+
+            a:hover {
+                fill: var(--color-light);
+            }
         }
+
     }
 
     .header-menu-mobile {
@@ -111,7 +185,7 @@ a:hover {
 
         &-inner {
             .icon {
-                color: #3c4859;
+                color: var(--color-type);
                 height: 25px;
                 width: 25px;
             }
@@ -133,7 +207,7 @@ a:hover {
     z-index: 2000;
 
     &-bg {
-        background: #fff;
+        background: var(--color-white-light);
         height: 100vh;
         left: 0;
         position: absolute;
@@ -175,7 +249,7 @@ a:hover {
         width: 25px;
 
         .icon {
-            color: #3c4859;
+            color: var(--color-type);
             height: 25px;
             width: 25px;
         }
@@ -189,12 +263,16 @@ a:hover {
 
 /* 主体框架 */
 .main {
-    min-height: 500px;
     position: relative;
-
+    margin-bottom: 150px;
+    
     .inner {
         padding-right: 300px;
-        // .inner-main {}
+        
+        .inner-main {
+            position: relative;
+            width: 100%;
+        }
     }
 }
 
@@ -207,11 +285,83 @@ a:hover {
     transition: all 0.2s;
     width: 280px;
 
-    .widget {
-        background: #fff;
+    .search {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        max-height: calc(100vh - 140px);
+        margin-bottom: 20px;
+        border: 2px solid var(--color-white-light);
         border-radius: 8px;
-        margin-bottom: 10px;
-        max-height: calc(100vh - 100px);
+        overflow: hidden;
+        z-index: 10;
+        transition: all .3s;
+
+        .form-input {
+            height: 46px;
+            line-height: 46px;
+            padding: 0 20px;
+            border: 0;
+            border-radius: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &::placeholder {
+                font-family: 'Oswald', sans-serif;
+                color: var(--color-white);
+            }
+        }
+
+        &-focus {
+            border: 2px solid rgba(var(--color-type), .2);
+            transition: all .3s;
+        }
+
+        .form-icon {
+            width: 24px;
+            height: 24px;
+            right: 6px;
+        }
+
+        &-result {
+            display: none;
+            width: 100%;
+            max-height: calc(100vh - 190px);
+            padding: 0 20px 15px;
+            background: var(--color-white-light);
+            overflow-y: scroll;
+            
+            &-item {
+                display: block;
+                padding: 10px 0;
+                border-top: 1px solid var(--color-white);
+
+                h1 {
+                    margin: 0 0 5px;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    .widget {
+        position: relative;
+        background: var(--color-white-light);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-height: calc(100vh - 210px);
         overflow-y: scroll;
         padding: 20px;
 
@@ -228,8 +378,8 @@ a:hover {
             }
 
             .widget-title {
-                color: $color-white;
-                font-family: 'oswald', sans-serif;
+                color: var(--color-white);
+                font-family: 'Oswald', sans-serif;
                 font-size: 16px;
                 font-weight: 300;
                 text-transform: uppercase;
@@ -259,13 +409,41 @@ a:hover {
             }
 
             li::before {
-                background: $color-main;
+                background: var(--color-main);
                 content: '';
                 height: 14px;
                 left: 0;
                 position: absolute;
                 top: 4px;
                 width: 3px;
+            }
+        }
+
+        .widget-tags {
+            .tag-list {
+                .tag-list-item {
+                    border: 1px dashed var(--color-white);
+                    border-radius: 3px;
+                    box-sizing: border-box;
+                    display: inline-block;
+                    line-height: 24px;
+                    margin-bottom: 10px;
+                    margin-right: 10px;
+                    padding: 0 8px;
+                    transition: all 0.2s;
+
+                    a {
+                        color: var(--color-white);
+                    }
+                }
+
+                .tag-list-item:hover {
+                    border-color: var(--color-main);
+
+                    a {
+                        color: var(--color-main);
+                    }
+                }
             }
         }
 
@@ -276,7 +454,7 @@ a:hover {
             }
 
             li::before {
-                background: $color-light;
+                background: var(--color-light);
                 border-radius: 2px;
                 content: '';
                 height: 5px;
@@ -290,11 +468,15 @@ a:hover {
 
 }
 
+.sidebar-search-fix {
+    padding-top: 70px;
+}
+
 #backtop {
-    background: #fff;
+    display: none;
+    background: var(--color-white-light);
     border-radius: 8px;
     cursor: pointer;
-    display: none;
     font-size: 0.7rem;
     font-weight: 300;
     padding: 15px 0;
@@ -307,16 +489,63 @@ a:hover {
 
 /* 首页 */
 .index {
-    margin-bottom: 60px;
-
     .article {
-        background: #fff;
+        background: var(--color-white-light);
         border-radius: 8px;
         margin-bottom: 20px;
         padding: 20px;
 
-        .article-inner {
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-badge {
+            position: absolute;
+            right: 0;
+            top: 0;
             display: flex;
+
+            .article-top {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                margin-left: 5px;
+                color: var(--color-white-light);
+                background-color: var(--color-light);
+                text-align: center;
+                border-radius: 3px;
+                user-select: none;
+
+                box-icon {
+                    margin-top: 2px;
+                }
+            }
+
+            .article-repost {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                margin-left: 5px;
+                color: var(--color-white-light);
+                background-color: var(--color-light);
+                text-align: center;
+                border-radius: 3px;
+                user-select: none;
+
+                box-icon {
+                    margin-top: 2px;
+                }
+            }
+        }
+
+        .article-inner {
+            position: relative;
+            display: flex;
+
+            // 首页文章流不显示视频
+            video {
+                display: none;
+            }
 
             .article-feature {
                 flex: 0 0 260px;
@@ -338,7 +567,7 @@ a:hover {
                 }
 
                 a::before {
-                    background-color: rgba(#000, 0.16);
+                    background-color: var(--color-black);
                     bottom: 0;
                     content: '';
                     left: 0;
@@ -346,6 +575,7 @@ a:hover {
                     right: 0;
                     top: 0;
                     transition: all 0.8s ease 0s;
+                    opacity: .16;
                     z-index: 1;
                 }
 
@@ -366,16 +596,16 @@ a:hover {
                 text-overflow: ellipsis;
 
                 .article-title {
-                    font-size: 1rem;
+                    font-size: 1.2rem;
                     font-weight: 500;
-                    padding: 0 0 10px;
+                    padding: 0 0 12px;
 
                     a {
-                        color: $color-type;
+                        color: var(--color-type);
                         line-height: 1.3;
 
                         &:hover {
-                            color: $color-main;
+                            color: var(--color-main);
                         }
                     }
                 }
@@ -390,70 +620,84 @@ a:hover {
             display: flex;
             justify-content: flex-end;
             padding: 20px 0 0;
-            // font-family: 'oswald', sans-serif;
+            // font-family: 'Oswald', sans-serif;
             
             .article-more-info {
                 display: flex;
 
                 .article-date {
                     align-items: center;
-                    border-left: 3px solid $color-light;
-                    color: $color-white;
+                    border-left: 3px solid var(--color-light);
+                    color: var(--color-white);
                     display: flex;
                     margin-left: 10px;
-                    padding-left: 5px;
+                    padding-left: 8px;
                 }
 
                 .article-category {
                     align-items: center;
-                    border-left: 3px solid $color-light;
+                    border-left: 3px solid var(--color-light);
                     display: flex;
                     margin-left: 10px;
-                    padding-left: 5px;
+                    padding-left: 8px;
                 }
 
                 .article-tag {
                     align-items: center;
-                    border-left: 3px solid $color-light;
+                    border-left: 3px solid var(--color-light);
                     display: flex;
                     margin-left: 10px;
-                    padding-left: 5px;
+                    padding-left: 8px;
 
                 }
 
                 .article-tag-list {
+                    display: flex;
                     margin: 0;
 
                     li {
                         list-style: none;
-                        margin: 0;
+                        margin: 0 3px 0 0;
                     }
                 }
             }
 
             a {
-                color: $color-white;
+                color: var(--color-white);
 
                 &:hover {
-                    color: $color-type;
+                    color: var(--color-type);
                 }
             }
+        }
+
+        // Video 
+        .article-video {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         // Tweet
         .article-tweet {
             position: relative;
 
+            // 首页文章流不显示视频
+            video {
+                display: none;
+            }
+
             &-quote {
                 height: 50px;
                 left: 0;
                 position: absolute;
-                top: 0;
+                top: -5px;
                 width: 50px;
+                transition: all .3s;
             }
 
             &-content {
-                padding: 10px 0 10px 80px;
+                padding: 0 0 10px 80px;
 
                 p {
                     font-weight: 300;
@@ -467,49 +711,64 @@ a:hover {
 
                 &-common {
                     align-items: center;
-                    border-left: 3px solid $color-light;
+                    border-left: 3px solid var(--color-light);
                     display: flex;
                     margin-left: 10px;
                     padding-left: 5px;
                 }
             }
         }
+
+        .article-tweet:hover {
+            .article-tweet-quote {
+                transform: scale(1.1);
+            }
+        }
     }
 }
 
 /* 文章内页 */
-.post {
+.post,
+.tweet {
     margin-bottom: 60px;
 
     .article {
-        background: #fff;
+        background: var(--color-white-light);
         border-radius: 8px;
-        box-shadow: 0 8px 12px #ebedf0;
         margin-bottom: 20px;
         padding: 20px;
         position: relative;
 
         .article-gallery {
-            a {
-                display: block;
-                margin-bottom: 0.5rem;
-
-                img {
-                    width: 100%;
-                }
+            z-index: 0 !important;
+            
+            img {
+                width: 100%;
+                cursor: pointer;
             }
+
+            &-active {
+                background: var(--color-type);
+                opacity: 1;
+            }
+        }
+
+        // Video 
+        .article-video {
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         .article-title {
             font-size: 1.4rem;
             font-weight: 300;
-            padding-top: 10px;
+            padding-top: 15px;
 
             a {
-                color: $color-type;
+                color: var(--color-type);
 
                 &:hover {
-                    color: $color-main;
+                    color: var(--color-main);
                 }
             }
         }
@@ -517,6 +776,11 @@ a:hover {
         .article-entry {
             padding-bottom: 60px;
             position: relative;
+
+            .plyr {
+                border-radius: 5px;
+                overflow: hidden;
+            }
         }
 
         .article-more-info {
@@ -531,44 +795,54 @@ a:hover {
 
             .article-date {
                 align-items: center;
-                border-left: 3px solid $color-light;
-                color: $color-white;
+                border-left: 3px solid var(--color-light);
+                color: var(--color-white);
                 display: flex;
                 margin-right: 10px;
-                padding-left: 5px;
+                padding-left: 8px;
             }
 
             .article-category {
                 align-items: center;
-                border-left: 3px solid $color-light;
+                border-left: 3px solid var(--color-light);
                 display: flex;
                 margin-right: 10px;
-                padding: 0 15px;
-                padding-left: 5px;
+                padding-left: 8px;
             }
 
             .article-tag {
                 align-items: center;
-                border-left: 3px solid $color-light;
+                border-left: 3px solid var(--color-light);
                 display: flex;
                 margin-right: 10px;
-                padding-left: 5px;
+                padding-left: 8px;
 
                 .article-tag-list {
+                    display: flex;
                     margin: 0;
 
                     li {
                         list-style: none;
-                        margin: 0;
+                        margin: 0 3px 0 0;
                     }
                 }
             }
+            
+            .article-busuanzi,
+            .article-counter {
+                align-items: center;
+                border-left: 3px solid var(--color-light);
+                color: var(--color-white);
+                display: flex;
+                margin-right: 10px;
+                padding-left: 8px;
+            }
 
             a {
-                color: $color-white;
+                color: var(--color-white);
 
                 &:hover {
-                    color: $color-type;
+                    color: var(--color-type);
                 }
             }
         }
@@ -580,7 +854,7 @@ a:hover {
 
             .article-nav-link-wrap {
                 .article-nav-caption {
-                    color: $color-white;
+                    color: var(--color-white);
                     font-size: 12px;
                     margin-bottom: 5px;
                 }
@@ -597,7 +871,7 @@ a:hover {
             position: relative;
 
             p {
-                border-left: 3px solid $color-light;
+                border-left: 3px solid var(--color-light);
                 font-size: 13px;
                 line-height: 1.6;
                 margin: 0;
@@ -611,7 +885,7 @@ a:hover {
             position: relative;
 
             p {
-                border-left: 3px solid $color-light;
+                border-left: 3px solid var(--color-light);
                 font-size: 13px;
                 line-height: 1.6;
                 margin-bottom: 10px;
@@ -628,7 +902,7 @@ a:hover {
             position: relative;
 
             h3 {
-                color: $color-black;
+                color: var(--color-black);
                 font-size: 16px;
                 font-weight: 300;
                 margin-bottom: 15px;
@@ -641,7 +915,7 @@ a:hover {
             top: 10rem;
 
             .share-title {
-                color: #aaa;
+                color: var(--color-type);
                 font-size: 13px;
                 padding-bottom: 10px;
                 text-align: center;
@@ -649,17 +923,19 @@ a:hover {
 
             .share-item {
                 align-items: center;
-                background-color: #fff;
+                background-color: var(--color-white-light);
                 border-radius: 50%;
                 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
                 display: flex;
+                fill: var(--color-type);
                 height: 2rem;
                 justify-content: center;
                 margin-bottom: 10px;
+                transition: all 0.3s;
                 width: 2rem;
 
-                .n-icon {
-                    transition: all 0.3s;
+                &:hover {
+                    fill: var(--color-light);
                 }
             }
         }
@@ -667,7 +943,7 @@ a:hover {
 }
 
 .archives-wrap {
-    background: #fff;
+    background: var(--color-white-light);
     border-radius: 8px;
     margin-bottom: 20px;
     padding: 20px;
@@ -676,18 +952,18 @@ a:hover {
         padding-bottom: 8px;
 
         a {
-            color: $color-white;
+            color: var(--color-white);
             font-size: 14px;
 
             &:hover {
-                color: $color-main;
+                color: var(--color-main);
             }
         }
     }
 
     .archive-article {
         h1 {
-            color: $color-type;
+            color: var(--color-type);
             font-size: 14px;
             font-weight: 400;
             line-height: 22px;
@@ -697,50 +973,41 @@ a:hover {
 }
 
 .footer {
-    background: $color-type;
-    font-family: 'oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 13px;
     width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
 
-    .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        margin: 0 auto;
+    &-wave {
+        width: 100%;
+        height: auto;
+    }
+
+    &-wrap {
+        margin-top: -3px;
+        width: 100%;
+        height: auto;
+        background: var(--color-type);
+    }
+
+    &-inner {
         max-width: 1200px;
-        padding: 0 20px;
-
-        .footer-info {
-            align-items: center;
-            color: $color-white;
-            display: flex;
-
-            span {
-                line-height: 20px;
-                margin-right: 5px;
-            }
-
-            .social {
-                display: inline-block;
-                height: 18px;
-                margin: 0 0 0 8px;
-                width: 18px;
-
-                .n-icon {
-                    height: 18px;
-                    transition: all 0.3s;
-                    width: 18px;
-                }
-            }
-        }
-
-        .footer-powered {
-            color: $color-white;
-            line-height: 4rem;
-        }
+        margin: 0 auto;
+        padding: 0 20px 50px;
+        color: var(--color-white);
+        line-height: 22px;
+        user-select: none;
 
         a {
-            color: $color-white;
+            color: var(--color-white);
             text-decoration: underline;
+
+            &:hover {
+                color: var(--color-white-light);
+            }
         }
     }
 }
@@ -748,32 +1015,44 @@ a:hover {
 .pagination {
     font-size: 14px;
     justify-content: center;
-    padding: 20px 0 0;
+    padding: 30px 0 0;
 
     .page-number {
-        color: $color-main;
+        color: var(--color-main);
         padding: 10px;
+        margin: 0 5px;
+        background: var(--color-white-light);
+        border-radius: 8px;
 
         &:hover {
-            color: $color-light;
+            color: var(--color-light);
         }
 
         &.current {
-            color: $color-white;
+            color: var(--color-white);
             cursor: not-allowed;
         }
     }
 
     .extend {
         padding: 10px;
+        margin: 0 5px;
+        background: var(--color-white-light);
+        border-radius: 8px;
 
         &:hover {
-            color: $color-light;
+            color: var(--color-light);
         }
     }
 }
 
-/* import */
+.comments {
+    background: var(--color-white-light);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
 
-@import './icons';
+/* import */
+@import './page';
 @import './media-fixed';

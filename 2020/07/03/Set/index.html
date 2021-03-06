@@ -1,128 +1,350 @@
 <!DOCTYPE html>
-<html>
 
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
 <head>
-    <meta charset="utf-8">
-    
-    <title>Set | Jessie Peng</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
-    <meta name="description" content="Java类库帮助我们在程序设计中实现传统的数据结构。">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java类库帮助我们在程序设计中实现传统的数据结构。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set">
 <meta property="og:url" content="http://yoursite.com/2020/07/03/Set/index.html">
-<meta property="og:site_name" content="Jessie Peng">
+<meta property="og:site_name" content="Jesse Peng">
 <meta property="og:description" content="Java类库帮助我们在程序设计中实现传统的数据结构。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/07/03/Set/linkedList.jpeg">
 <meta property="og:image" content="http://yoursite.com/2020/07/03/Set/%E6%95%A3%E5%88%97%E8%A1%A8.jpeg">
-<meta property="article:published_time" content="2020-07-03T14:17:55.000Z">
+<meta property="article:published_time" content="2020-07-03T21:17:55.000Z">
 <meta property="article:modified_time" content="2020-07-05T05:33:31.565Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Jesse Peng">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/07/03/Set/linkedList.jpeg">
 
-    
 
-    
 
-    
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
-    <link rel="stylesheet" href="/dist/build.css?1.2.0">
 
-    <script>
-        window.aomori = {
-            
-        }
-    </script>
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/03/Set/"/>
+
+
+
+
+
+  <title>Set | Jesse Peng</title>
+  
+
+
+
+
+
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  <div class="container">
-  <header class="header">
-    <div class="header-type">
-      
-      <div class="avatar avatar-sm">
-        <img src="/images/avatar.jpg" alt="John Doe">
-      </div>
-      
-      <a href="/">Jessie Peng</a>
-    </div>
-    <div class="header-menu">
-      
-        <a href="/">Home</a>
-      
-        <a href="/archives">Archives</a>
-      
-    </div>
+  
+  
     
-    <div class="header-menu-mobile">
-      <div class="header-menu-mobile-inner" id="mobile-menu-open">
-        <i class="icon icon-menu"></i>
-      </div>
-    </div>
-  </header>
+  
 
-  <div class="header-menu-mobile-menu">
-    <div class="header-menu-mobile-menu-bg"></div>
-    <div class="header-menu-mobile-menu-wrap">
-      <div class="header-menu-mobile-menu-inner">
-        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
-          <i class="icon icon-cross"></i>
-        </div>
-        <div class="header-menu-mobile-menu-list">
-          
-            <a href="/">Home</a>
-          
-            <a href="/archives">Archives</a>
-          
-        </div>
-      </div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jesse Peng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-  <div class="container">
-    <div class="main">
-      <section class="inner">
-        <section class="inner-main">
-          <div class="post">
-    <article id="post-Set" class="article article-type-post" itemscope
-    itemprop="blogPost">
-
-    <div class="article-inner">
-
-        
-
-        
-        <header class="article-header">
-            
-  
-    <h1 class="article-title" itemprop="name">
-      Set
-    </h1>
+<nav class="site-nav">
   
 
-        </header>
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/03/Set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesse Peng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jumper.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jesse Peng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Set</h1>
         
 
-        <div class="article-more-info article-more-info-post hairline">
-            <div class="article-date">
-  <time datetime="2020-07-03T14:17:55.000Z" itemprop="datePublished">2020-07-03</time>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
             
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/Java/">Java</a>
-            </div>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-03T22:17:55+01:00">
+                2020-07-03
+              </time>
             
+
             
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
 
-        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>Java类库帮助我们在程序设计中实现传统的数据结构。</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java类库帮助我们在程序设计中实现传统的数据结构。</p>
 <a id="more"></a>
 
 <h3 id="1-链表"><a href="#1-链表" class="headerlink" title="1. 链表"></a>1. 链表</h3><p>在Java中，数组和数字列表都有一个很大缺陷，从数组中间位置删除一个元素要付很大代价，其原因是数组中处于被删除之后的所有元素都要向数组前端移动，在数组中插入一个元素也是如此。链表（linked list）完美地解决了这个问题。</p>
@@ -132,18 +354,32 @@
 <li><p>链表与泛型集合的重要区别是，链表是一个有序集合，每个对象位置十分重要。LinkedList.add方法将对象添加到链表尾部，但是常常需要将元素添加到链表中间。实现这一功能需要迭代器的帮助。只有对自然有序的集合使用迭代器添加元素才有意义。集合类库中，提供了ListIterator方法，其中包含add方法</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E element)</span></span>;</span><br><span class="line">    ... </span><br><span class="line">    <span class="function">E <span class="title">previous</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="Java">interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt;
+{
+    void add(E element);
+    ... 
+    E previous()
+    boolean hasPrevious()
+}</code></pre>
 <ol start="3">
 <li><p>与next方法一样，previous方法返回越过对象<br>Add方法在迭代器位置之前添加一个新对象，下面的代码将越过链表中的第一个元素，并在第二个元素前添加Juliet</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; staff = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">staff.add(<span class="string">"Amy"</span>);</span><br><span class="line">staff.add(<span class="string">"Bob"</span>);</span><br><span class="line">staff.add(<span class="string">"Carl"</span>);</span><br><span class="line">ListIterator&lt;String&gt; iter = staff.listIterator();</span><br><span class="line">iter.next();</span><br><span class="line">next.add(<span class="string">"Juliet"</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="Java">List&lt;String&gt; staff = new LinkedList&lt;&gt;();
+staff.add(&quot;Amy&quot;);
+staff.add(&quot;Bob&quot;);
+staff.add(&quot;Carl&quot;);
+ListIterator&lt;String&gt; iter = staff.listIterator();
+iter.next();
+next.add(&quot;Juliet&quot;);</code></pre>
 </li>
 <li><p>set方法用一个新的元素取代调用next或previous方法返回上一个元素。</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ListIterator&lt;String&gt; iter = list.listIterator();</span><br><span class="line">String oldValue = iter.next;</span><br><span class="line">iter.set(newValue);<span class="comment">// set the first element to newValue</span></span><br></pre></td></tr></table></figure>
+<pre><code class="Java">ListIterator&lt;String&gt; iter = list.listIterator();
+String oldValue = iter.next;
+iter.set(newValue);// set the first element to newValue</code></pre>
 <ol start="5">
-<li>链表不支持快速访问元素。如果要查看链表中第n个元素，必须要越过n-1个元素，没有捷径可走。尽管如此，LinkedList类还是提供了一个用来访问你的get方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;String&gt; list = ...;</span><br><span class="line">String obj = list.get(n);</span><br></pre></td></tr></table></figure>
+<li>链表不支持快速访问元素。如果要查看链表中第n个元素，必须要越过n-1个元素，没有捷径可走。尽管如此，LinkedList类还是提供了一个用来访问你的get方法：<pre><code class="Java">LinkedList&lt;String&gt; list = ...;
+String obj = list.get(n);</code></pre>
 当然，这种方法的效率很低，如果发现了正在使用这种方法，可能对于要解决的问题使用了错误的数据结构。</li>
 </ol>
 <h3 id="2-数组"><a href="#2-数组" class="headerlink" title="2. 数组"></a>2. 数组</h3><p>在Java中有两种访问元素的协议，一种是用迭代器，另一种是用get，set方法随机地访问每个元素。后者不适用于链表，但对数组却很有用。集合类库提供了大家熟悉的ArrayList类，这个类也实现了List接口。ArrayList封装了一个动态再分配的数组对象。</p>
@@ -152,10 +388,19 @@
 <li><p>散列表（hash table）：散列表为每个对象计算一个整数，称为散列码（hash code）。散列码是由对象的实例域产生的一个整数。具有不同数据域的对象将产生不同散列码。</p>
 </li>
 <li><p>hashCode 方法：hashCode方法应该返回一个整型数值（也可为负），并合理的组织实例域的散列码，以便能让各个不同的对象产生的散列码更均匀。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">7</span> * name.hashCode()</span><br><span class="line">        + <span class="number">11</span> * <span class="keyword">new</span> Double(salary).hashCode()</span><br><span class="line">        + <span class="number">13</span> * hireDay.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Java">public class Employee
+{
+    public int hashCode(){
+        return 7 * name.hashCode()
+        + 11 * new Double(salary).hashCode()
+        + 13 * hireDay.hashCode();
+    }
+}</code></pre>
 <p>不过还可以做得更好，用Object.hashCode方法来使null安全。如果参数为null，返回0，否则返回对参数调用hashCode的结果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Object.hash(name,salary,hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="Java">public int hashCode(){
+    return Object.hash(name,salary,hireDay);
+}</code></pre>
+</li>
 <li><p>查找/插入元素<br><img src="%E6%95%A3%E5%88%97%E8%A1%A8.jpeg" alt=""></p>
 <ol>
 <li><p>在Java中散列表用链表数组实现，每个列表称为桶。要想查找表中对象的位置，需要先计算他的散列码，然后与桶的总数取余，所得结果就是保存这个元素的桶的索引。例如，某对象散列码为76268，有128个桶，对象应该保存在第108号桶中。若该桶没有其他元素，则直接插入。若该桶被占满，这种现象称为<strong><em>散列冲突</em></strong>，这时新对象与桶中所有对象比较，查看该对象是否已经存在。</p>
@@ -168,10 +413,10 @@
 </li>
 </ol>
 
-        </div>
-
+      
     </div>
-
+    
+    
     
 
     
@@ -179,172 +424,232 @@
     
 
     
-<div class="article-copyright hairline">
-  <p>
-    本作品采用 <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可。
-  </p>
-</div>
 
+    <footer class="post-footer">
+      
 
-    
+      
+      
+      
 
-    
-<nav class="article-nav">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/27/Thread/" rel="next" title="Thread">
+                <i class="fa fa-chevron-left"></i> Thread
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/05/Map/" rel="prev" title="Map">
+                Map <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
   
-    <a href="/2020/07/05/Map/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          Map
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/06/27/Thread/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Thread</div>
-    </a>
-  
-</nav>
-
-
-    <section class="share">
-        <div class="share-title">分享</div>
-        <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=Set - Jessie Peng&url=http://yoursite.com/2020/07/03/Set/">
-            <div class="n-icon n-icon-twitter"></div>
-        </a>
-        <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=Set - Jessie Peng&u=http://yoursite.com/2020/07/03/Set/">
-            <div class="n-icon n-icon-facebook"></div>
-        </a>
-        <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=Set - Jessie Peng&url=http://yoursite.com/2020/07/03/Set/&pic=">
-            <div class="n-icon n-icon-weibo"></div>
-        </a>
-    </section>
-
-</article>
+  </article>
 
 
 
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
-</div>
-        </section>
-      </section>
-      <aside class="sidebar">
-        <div class="widget">
+
+          </div>
+          
+
+
           
 
   
-  <div class="widget-wrap">
-    <div class="widget-inner">
-      <div class="toc post-toc-html"></div>
-    </div>
-  </div>
-
-
-  
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Categories</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Network/">Computer Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-structure/">Data structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning-Notes/">Learning Notes</a></li></ul>
-    </div>
-  </div>
-
-
-
-  
-  <div class="widget-wrap">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning-Notes/" rel="tag">Learning Notes</a></li></ul>
-    </div>
-  </div>
-
-
-
-  
-  <div class="widget-wrap widget-recent-posts">
-    <div class="widget-title"><span>Recent Posts</span></div>
-    <div class="widget-inner">
-      <ul>
-        
-          <li>
-            <a href="/2021/03/05/Principle/">Hash Principle</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/04/command/">VS Code keyboard command</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/02/gittutorial/">Git Tutorial</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/19/Request/">Servlet&amp;HTTP&amp;Request笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/21/servlet/">Servlet 执行原理</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-  <div class="widget-wrap widget-archive">
-    <div class="widget-title"><span>Archive</span></div>
-    <div class="widget-inner">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
-    </div>
-  </div>
 
 
 
         </div>
-        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
-      </aside>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-info">
-            <span>&copy; 2013 - 2021 Jessie Peng</span>
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/jumper.jpeg"
+                alt="Jesse Peng" />
+            
+              <p class="site-author-name" itemprop="name">Jesse Peng</p>
+              <p class="site-description motion-element" itemprop="description">Do not go gentle into that good night</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
 
+          </nav>
 
+          
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JessiePen" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Y.Peng1998@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/pengyuhe7" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
 
+          
+          
 
+          
+          
 
-
-
-  <a class="social" href="/">
-    <span class="n-icon n-icon-github"></span>
-  </a>
+          
 
         </div>
-        <div class="footer-powered">
-            <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Aomori</a> Theme · Powered By Hexo
-        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链表"><span class="nav-number">1.</span> <span class="nav-text">1. 链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组"><span class="nav-number">2.</span> <span class="nav-text">2. 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-散列集"><span class="nav-number">3.</span> <span class="nav-text">3. 散列集</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
     </div>
-</footer>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jesse Peng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
-<script src="/dist/build.js?1.2.0.js"></script>
-
-
-<script src="/dist/custom.js?1.2.0.js"></script>
+        
 
 
 
@@ -352,6 +657,166 @@
 
 
 
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
