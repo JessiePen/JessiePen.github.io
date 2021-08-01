@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Basic principles of hashCode, hash() functions, and hash collisions">
+<meta name="description" content="Java类库帮助我们在程序设计中实现传统的数据结构。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hash Principle">
-<meta property="og:url" content="https://jessiepen.github.io/2021/03/05/Principle/index.html">
+<meta property="og:title" content="Set">
+<meta property="og:url" content="https://jessiepen.github.io/2020/07/04/Set/index.html">
 <meta property="og:site_name" content="Jessie Peng">
-<meta property="og:description" content="Basic principles of hashCode, hash() functions, and hash collisions">
+<meta property="og:description" content="Java类库帮助我们在程序设计中实现传统的数据结构。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://jessiepen.github.io/2021/03/05/Principle/chain.jpeg">
-<meta property="og:image" content="https://jessiepen.github.io/2021/03/05/Principle/Sets.jpeg">
-<meta property="article:published_time" content="2021-03-05T23:02:41.000Z">
-<meta property="article:modified_time" content="2021-03-05T23:45:44.564Z">
+<meta property="og:image" content="https://jessiepen.github.io/2020/07/04/Set/linkedList.jpeg">
+<meta property="og:image" content="https://jessiepen.github.io/2020/07/04/Set/%E6%95%A3%E5%88%97%E8%A1%A8.jpeg">
+<meta property="article:published_time" content="2020-07-03T21:17:55.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:33:31.565Z">
 <meta property="article:author" content="Jesse Peng">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jessiepen.github.io/2021/03/05/Principle/chain.jpeg">
+<meta name="twitter:image" content="https://jessiepen.github.io/2020/07/04/Set/linkedList.jpeg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://jessiepen.github.io/2021/03/05/Principle/"/>
+  <link rel="canonical" href="https://jessiepen.github.io/2020/07/04/Set/"/>
 
 
 
 
 
-  <title>Hash Principle | Jessie Peng</title>
+  <title>Set | Jessie Peng</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jessiepen.github.io/2021/03/05/Principle/">
+    <link itemprop="mainEntityOfPage" href="https://jessiepen.github.io/2020/07/04/Set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jesse Peng">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hash Principle</h1>
+          <h1 class="post-title" itemprop="name headline">Set</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-05T23:02:41+00:00">
-                2021-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-04T05:17:55+08:00">
+                2020-07-04
               </time>
             
 
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-structure/" itemprop="url" rel="index">
-                    <span itemprop="name">Data structure</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -344,73 +344,74 @@
       
 
       
-        <p>Basic principles of hashCode, hash() functions, and hash collisions</p>
+        <p>Java类库帮助我们在程序设计中实现传统的数据结构。</p>
 <a id="more"></a>
 
-<h1 id="Hash-Principle"><a href="#Hash-Principle" class="headerlink" title="Hash Principle"></a>Hash Principle</h1><h2 id="1-hash-functions"><a href="#1-hash-functions" class="headerlink" title="1. hash functions"></a>1. hash functions</h2><ol>
-<li><p>Requirement: a. efficiently computable  b. Each table index equally likely for each key</p>
-</li>
-<li><p>hashCode() : </p>
-<pre><code class="java">if x.equals(y),then (x.hashCode() == y.hashCode())</code></pre>
-</li>
-</ol>
-<ol start="3">
-<li><p>*<em>Hash code: *</em> An <code>int</code> between -2^31 and 2^31-1</p>
-<p>*<em>Hash function: *</em> An <code>int</code> between 0 and M-1 (for use as array index)</p>
-<pre><code class="java">private int hash(Key key) 
-  {return (key.hashCode() &amp; 0*7fffffff) % M}</code></pre>
-</li>
-</ol>
-<h2 id="2-Collisions"><a href="#2-Collisions" class="headerlink" title="2. Collisions"></a>2. Collisions</h2><ol>
-<li><p>Collisions: Two distinct keys hashing to same index</p>
-</li>
-<li><p>Separate chaining: </p>
-</li>
-</ol>
-<p><img src="chain.jpeg" alt=""></p>
-<p>Summary : Hash table with separate chaining cost <strong>constant</strong> time in search, insert and delete. As a result it is preferred for short keys where the hash function is easy to compute</p>
+<h3 id="1-链表"><a href="#1-链表" class="headerlink" title="1. 链表"></a>1. 链表</h3><p>在Java中，数组和数字列表都有一个很大缺陷，从数组中间位置删除一个元素要付很大代价，其原因是数组中处于被删除之后的所有元素都要向数组前端移动，在数组中插入一个元素也是如此。链表（linked list）完美地解决了这个问题。</p>
 <ol>
-<li><p>Linear probing hash table:</p>
-<p><strong>Hash</strong>. Map key to integer i between 0 and M-1</p>
-<p><strong>Insert.</strong> Put table index i if free; if not try i+1, i+2, etc. </p>
-<p><strong>Search.</strong> Search table index i; if occupied but no match, try i+1, i+2, etc.</p>
-<p><strong>Note.</strong> Array size M must be greater than number of key-value pairs N.</p>
+<li><p>链表将每个对象存放在独立的节点中，每个节点还放着下一个节点的引用。在Java中，所有链表都是双向链接的。<br><img src="linkedList.jpeg" alt=""></p>
 </li>
-<li><p>Parameters. </p>
-<ul>
-<li>M too large  =&gt;  too many empty array entries (waste memory)</li>
-</ul>
-<ul>
-<li><p>M too small  =&gt; search time blows up</p>
-</li>
-<li><p>Typical choice: a =  N/M ~ 1/2</p>
-<p>probes for search hit is about 3/2</p>
-<p>probes for search miss is about 5/2</p>
-</li>
-</ul>
+<li><p>链表与泛型集合的重要区别是，链表是一个有序集合，每个对象位置十分重要。LinkedList.add方法将对象添加到链表尾部，但是常常需要将元素添加到链表中间。实现这一功能需要迭代器的帮助。只有对自然有序的集合使用迭代器添加元素才有意义。集合类库中，提供了ListIterator方法，其中包含add方法</p>
 </li>
 </ol>
-<h2 id="3-Context"><a href="#3-Context" class="headerlink" title="3.Context"></a>3.Context</h2><h3 id="1-Hash-tables"><a href="#1-Hash-tables" class="headerlink" title="1. Hash tables"></a>1. Hash tables</h3><ul>
-<li>Simple to code.</li>
-<li>No effective alternative for unordered keys.</li>
-<li>Faster for simple keys (a few arithmetic ops versus log<em>N</em> compares)</li>
-<li>Better system support in Java for strings (e.g., cached hash code)</li>
-</ul>
-<h3 id="2-Balanced-search-trees"><a href="#2-Balanced-search-trees" class="headerlink" title="2.Balanced search trees"></a>2.Balanced search trees</h3><ul>
-<li>Stronger performance guarantee.</li>
-<li>Support for ordered ST operations.</li>
-<li>Easier to implement compareTo() correctly than equals() and hashCode()</li>
-</ul>
-<h3 id="3-Java-system-includes-both"><a href="#3-Java-system-includes-both" class="headerlink" title="3. Java system includes both"></a>3. Java system includes both</h3><ul>
-<li><p>Red-black BSTs: java.util.TreeMap, java.util.TreeSet</p>
+<pre><code class="Java">interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt;
+{
+    void add(E element);
+    ... 
+    E previous()
+    boolean hasPrevious()
+}</code></pre>
+<ol start="3">
+<li><p>与next方法一样，previous方法返回越过对象<br>Add方法在迭代器位置之前添加一个新对象，下面的代码将越过链表中的第一个元素，并在第二个元素前添加Juliet</p>
+<pre><code class="Java">List&lt;String&gt; staff = new LinkedList&lt;&gt;();
+staff.add(&quot;Amy&quot;);
+staff.add(&quot;Bob&quot;);
+staff.add(&quot;Carl&quot;);
+ListIterator&lt;String&gt; iter = staff.listIterator();
+iter.next();
+next.add(&quot;Juliet&quot;);</code></pre>
 </li>
-<li><p>Hash tables: java.util.HashMap, java.util.IdentityHashMap.</p>
+<li><p>set方法用一个新的元素取代调用next或previous方法返回上一个元素。</p>
 </li>
-</ul>
-<h2 id="4-Simbol-Table-Application"><a href="#4-Simbol-Table-Application" class="headerlink" title="4. Simbol Table Application"></a>4. Simbol Table Application</h2><h3 id="1-Sets"><a href="#1-Sets" class="headerlink" title="1. Sets"></a>1. Sets</h3><p><img src="Sets.jpeg" alt=""></p>
-<ul>
-<li>Usage: Read in a list of words from one file, print out all words from standard input that are {in, not in} the list. </li>
-</ul>
+</ol>
+<pre><code class="Java">ListIterator&lt;String&gt; iter = list.listIterator();
+String oldValue = iter.next;
+iter.set(newValue);// set the first element to newValue</code></pre>
+<ol start="5">
+<li>链表不支持快速访问元素。如果要查看链表中第n个元素，必须要越过n-1个元素，没有捷径可走。尽管如此，LinkedList类还是提供了一个用来访问你的get方法：<pre><code class="Java">LinkedList&lt;String&gt; list = ...;
+String obj = list.get(n);</code></pre>
+当然，这种方法的效率很低，如果发现了正在使用这种方法，可能对于要解决的问题使用了错误的数据结构。</li>
+</ol>
+<h3 id="2-数组"><a href="#2-数组" class="headerlink" title="2. 数组"></a>2. 数组</h3><p>在Java中有两种访问元素的协议，一种是用迭代器，另一种是用get，set方法随机地访问每个元素。后者不适用于链表，但对数组却很有用。集合类库提供了大家熟悉的ArrayList类，这个类也实现了List接口。ArrayList封装了一个动态再分配的数组对象。</p>
+<h3 id="3-散列集"><a href="#3-散列集" class="headerlink" title="3. 散列集"></a>3. 散列集</h3><p>散列集可以快速查找元素，缺点是无法控制元素的出现次序，适用于不知索引快速查找对象的情况。它们将按照有利于其操作目的的原则组织数据。</p>
+<ol>
+<li><p>散列表（hash table）：散列表为每个对象计算一个整数，称为散列码（hash code）。散列码是由对象的实例域产生的一个整数。具有不同数据域的对象将产生不同散列码。</p>
+</li>
+<li><p>hashCode 方法：hashCode方法应该返回一个整型数值（也可为负），并合理的组织实例域的散列码，以便能让各个不同的对象产生的散列码更均匀。</p>
+<pre><code class="Java">public class Employee
+{
+    public int hashCode(){
+        return 7 * name.hashCode()
+        + 11 * new Double(salary).hashCode()
+        + 13 * hireDay.hashCode();
+    }
+}</code></pre>
+<p>不过还可以做得更好，用Object.hashCode方法来使null安全。如果参数为null，返回0，否则返回对参数调用hashCode的结果。</p>
+<pre><code class="Java">public int hashCode(){
+    return Object.hash(name,salary,hireDay);
+}</code></pre>
+</li>
+<li><p>查找/插入元素<br><img src="%E6%95%A3%E5%88%97%E8%A1%A8.jpeg" alt=""></p>
+<ol>
+<li><p>在Java中散列表用链表数组实现，每个列表称为桶。要想查找表中对象的位置，需要先计算他的散列码，然后与桶的总数取余，所得结果就是保存这个元素的桶的索引。例如，某对象散列码为76268，有128个桶，对象应该保存在第108号桶中。若该桶没有其他元素，则直接插入。若该桶被占满，这种现象称为<strong><em>散列冲突</em></strong>，这时新对象与桶中所有对象比较，查看该对象是否已经存在。</p>
+</li>
+<li><p>桶数设定: 如果大致知道有多少个元素要插入散列表中，就可以设置初始桶数。通常将桶数设置为预计元素个数的 70% ~ 150%。标准类库中，使用的桶数是2的幂，默认值为16。在JavaSE8中，桶满时会从链表变为平衡二叉树。</p>
+</li>
+</ol>
+</li>
+<li><p>HashSet类<br>Java类库提供了一个HashSet类，它实现基于散列表的集，可以用add方法添加元素。contains方法被重新定义，用来快速查看某个元素是否出现在集中。 </p>
+</li>
+</ol>
 
       
     </div>
@@ -435,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/03/04/command/" rel="next" title="VS Code keyboard command">
-                <i class="fa fa-chevron-left"></i> VS Code keyboard command
+              <a href="/2020/06/27/Thread/" rel="next" title="Thread">
+                <i class="fa fa-chevron-left"></i> Thread
               </a>
             
           </div>
@@ -444,6 +445,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/05/Map/" rel="prev" title="Map">
+                Map <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -524,7 +529,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -535,7 +540,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -546,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -607,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash-Principle"><span class="nav-number">1.</span> <span class="nav-text">Hash Principle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-hash-functions"><span class="nav-number">1.1.</span> <span class="nav-text">1. hash functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Collisions"><span class="nav-number">1.2.</span> <span class="nav-text">2. Collisions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Context"><span class="nav-number">1.3.</span> <span class="nav-text">3.Context</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Hash-tables"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. Hash tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Balanced-search-trees"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.Balanced search trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java-system-includes-both"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. Java system includes both</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Simbol-Table-Application"><span class="nav-number">1.4.</span> <span class="nav-text">4. Simbol Table Application</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Sets"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. Sets</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链表"><span class="nav-number">1.</span> <span class="nav-text">1. 链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组"><span class="nav-number">2.</span> <span class="nav-text">2. 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-散列集"><span class="nav-number">3.</span> <span class="nav-text">3. 散列集</span></a></li></ol></div>
             
 
           </div>

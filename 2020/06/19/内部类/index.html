@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="什么是流(Stream)，流就是一系列的数据">
+<meta name="description" content="内部类是一个非常重要的概念，了解内部类对lambda表达式的学习很有帮助">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Stream">
-<meta property="og:url" content="https://jessiepen.github.io/2020/07/12/stream/index.html">
+<meta property="og:title" content="Inner Class">
+<meta property="og:url" content="https://jessiepen.github.io/2020/06/19/%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Jessie Peng">
-<meta property="og:description" content="什么是流(Stream)，流就是一系列的数据">
+<meta property="og:description" content="内部类是一个非常重要的概念，了解内部类对lambda表达式的学习很有帮助">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-12T14:23:19.000Z">
-<meta property="article:modified_time" content="2020-07-12T08:41:48.615Z">
+<meta property="article:published_time" content="2020-06-18T21:12:05.000Z">
+<meta property="article:modified_time" content="2020-06-29T02:41:44.849Z">
 <meta property="article:author" content="Jesse Peng">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://jessiepen.github.io/2020/07/12/stream/"/>
+  <link rel="canonical" href="https://jessiepen.github.io/2020/06/19/内部类/"/>
 
 
 
 
 
-  <title>Stream | Jessie Peng</title>
+  <title>Inner Class | Jessie Peng</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jessiepen.github.io/2020/07/12/stream/">
+    <link itemprop="mainEntityOfPage" href="https://jessiepen.github.io/2020/06/19/%E5%86%85%E9%83%A8%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jesse Peng">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Stream</h1>
+          <h1 class="post-title" itemprop="name headline">Inner Class</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T22:23:19+08:00">
-                2020-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T05:12:05+08:00">
+                2020-06-19
               </time>
             
 
@@ -341,117 +341,85 @@
       
 
       
-        <p>什么是流(Stream)，流就是一系列的数据</p>
+        <p>内部类是一个非常重要的概念，了解内部类对lambda表达式的学习很有帮助</p>
 <a id="more"></a>
-
-<h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><ol>
-<li><p>InputStream是字节输入流，同时也是抽象类，只提供方法声明，不提供方法的具体实现。FileInputStream 是InputStream子类，以FileInputStream 为例进行文件读取</p>
-<pre><code class="Java">package stream;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-public class TestStream {
-
- public static void main(String[] args) {
-     try {
-         //准备文件lol.txt其中的内容是AB，对应的ASCII分别是65 66
-         File f =new File(&quot;d:/lol.txt&quot;);
-         //创建基于文件的输入流
-         FileInputStream fis =new FileInputStream(f);
-         //创建字节数组，其长度就是文件的长度
-         byte[] all =new byte[(int) f.length()];
-         //以字节流的形式读取文件所有内容
-         fis.read(all);
-         for (byte b : all) {
-             //打印出来是65 66
-             System.out.println(b);
-         }
-
-         //每次使用完流，都应该进行关闭
-         fis.close();
-
-     } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         }
-       }
-       }</code></pre>
+<h2 id="Java内部类"><a href="#Java内部类" class="headerlink" title="Java内部类"></a>Java内部类</h2><ol>
+<li><p>定义：Java内部类是定义在另一个类中的类</p>
+<ul>
+<li><p>内部类可以访问该类所在的作用域中的数据，包括私有数据。</p>
 </li>
-</ol>
-<h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><ol>
-<li><p>FileReader 是Reader子类，以FileReader 为例进行文件读取</p>
-<pre><code class="Java">package stream;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
-public class TestStream {
-
- public static void main(String[] args) {
-     // 准备文件lol.txt其中的内容是AB
-     File f = new File(&quot;d:/lol.txt&quot;);
-     // 创建基于文件的Reader
-     //jdk7新特性，可在try后括号内定义流，此流在执行完try-catch命令后自动释放，故可省去finally代码
-     try (FileReader fr = new FileReader(f)) { 
-         // 创建字符数组，其长度就是文件的长度
-         char[] all = new char[(int) f.length()];
-         // 以字符流的形式读取文件所有内容
-         fr.read(all);
-         for (char b : all) {
-             // 打印出来是A B
-             System.out.println(b);
-         }
-     } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         }
-         }
-         }        </code></pre>
+<li><p>内部类可以对同一包中的其他类隐藏起来。</p>
 </li>
-<li><p>FileWriter 是Writer的子类，以FileWriter 为例把字符串写入到文件</p>
-<p><strong>需要注意的是</strong>使用FileWriter中的write，先把数据写入内存缓冲区（字符串转化为字节的过程），使用FileWriter中的方法flush将内存缓冲区的数据刷新到文件中</p>
-<pre><code class="Java">package stream;
+<li><p>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</p>
+<p>使用内部类访问对象状态<br>此处定义了一个TimerClock类。构造此类需提供interval，beep两参数</p>
+<pre><code class="Java">public class TalkingClock
+{
+   private int interval
+   private boolean beep
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+   public TalkingClock(int interval, boolean beep){...}
+   public void start(){...}
 
-public class TestStream {
-    public static void main(String[] args) {
-         // 准备文件lol2.txt
-         File f = new File(&quot;d:/lol2.txt&quot;);
-         // 创建基于文件的Writer
-         try (FileWriter fr = new FileWriter(f)) {
-             // 以字符流的形式把数据写入到文件中
-             String data=&quot;abcdefg1234567890&quot;;
-             char[] cs = data.toCharArray();
-             fr.write(cs);
-             } catch (IOException e) {
-                 // TODO Auto-generated catch block
-                 e.printStackTrace();
-                 }
-             }
+   public class TimePrinter implements ActionListener
+    // an inner class
+   {
+       ...
+   }
+}</code></pre>
+<p>需要注意的是，这里TimePrinter类位于TalkingClock类内部，此处定义TimePrinter类。</p>
+<pre><code class="Java">public class TimePrinter implements ActionListener{
+   public void actionPerformed(ActionEvent event){
+       System.out.print(new Date());
+       if(beep) Toolkit.getDefaultToolkit().beep();
+   }
+}</code></pre>
+<p>可以看到神奇的事发生了，TimePrinter没有实例域或名为beep的变量，但却引用了TalkingClock的域。内部类既可以访问自身的域，也可以访问创建他的外围对象的域。<br/><br/></p>
+</li>
+</ul>
+</li>
+<li><p>内部类的语法规则</p>
+<p> 可以像这样编写在外部类中的内部类的构造器：</p>
+<pre><code class="java"> outerObject.new InnerClass(Construction parameter)</code></pre>
+<p> 例如</p>
+<pre><code class="java">   ActionListener listener = this.new TimerPrinter //多态声明</code></pre>
+<p>  this指代构造timePrinter对象的外围类。同时，也可在外部类外调用内部类。此处当timePrinter是一个公有内部类时，可以将外围类的引用设置为其他对象比如</p>
+<pre><code class="java">   TalkingClock jabberer = new TalkingClock(1000,true);
+   TalkingClock.TimerPrinter listener = jabberer.new TimerPrinter();
+
+   TalkingClock.TimePrinter listener = new TalkingClock(1000,true).new TimerPrinter();//等价写法</code></pre>
+<p>   需要注意的是，内部类中所有声明的静态域都为final。内部类中不能有static方法。<br/><br/></p>
+</li>
+<li><p>局部内部类</p>
+<p>局部类通常被定义在方法中。</p>
+<pre><code class="Java">public void start()
+{
+    public void actionPerformed(Action event)
+    {
+        System.out.println(new Date());
+        if(beep) Toolkit.getDefaultToolkit().beep();
+    }
+
+    ActionListener listener = new TimePrinter();
+    Time t = new Timer(interval, listener);
+    t.start();
+}</code></pre>
+<p>局部类不能用public或public访问说明符进行声明，它的作用被限定在这个局部类的块中。局部类有一个优势，即对外部世界完全隐藏，即使外部类的其他代码也不能访问他，除start方法外，没有任何方法知道他的存在。<br/><br/></p>
+</li>
+<li><p>由外部类访问变量</p>
+<p>局部内部类若想访问所在方法的局部变量，该变量必须为有效final。原因有是因为，new出来的对象在堆内存中，局部变量由方法创建，在栈内存中，方法结束后自动清出。所以要使用final进行拷贝。<br/><br/></p>
+</li>
+<li><p>匿名内部类</p>
+<p> 将局部内部类的使用在深入，假如只创建这个类的一个对象，就不必命名了。</p>
+<pre><code class="Java"> public void start(int interval, boolean beep){
+     ActionListener listener = new ActionListener(){
+         public void actionPerformed(ActionEvent event)
+         {
+             System.out.println(new Date());
+         }
+     };
+     Timer t = new TImer(interval,listener);
+     t.start();
  }</code></pre>
-</li>
-</ol>
-<h2 id="中文问题"><a href="#中文问题" class="headerlink" title="中文问题"></a>中文问题</h2><ol>
-<li>使用字节读取中文字符时，GBK占用2个字节，utf-8占用3个字节。所以最好用字符流读取。<pre><code class="Java"> public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException {
-     File f = new File(&quot;E:\\project\\j2se\\src\\test.txt&quot;);
-     System.out.println(&quot;默认编码方式:&quot;+Charset.defaultCharset());
-     //FileReader得到的是字符，所以一定是已经把字节根据某种编码识别成了字符了
-     //而FileReader使用的编码方式是Charset.defaultCharset()的返回值，如果是中文的操作系统，就是GBK
-     try (FileReader fr = new FileReader(f)) {
-         char[] cs = new char[(int) f.length()];
-         fr.read(cs);
-         System.out.printf(&quot;FileReader会使用默认的编码方式%s,识别出来的字符是：%n&quot;,Charset.defaultCharset());
-         System.out.println(new String(cs));
-     } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-     }</code></pre>
 </li>
 </ol>
 
@@ -478,8 +446,8 @@ public class TestStream {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/05/Map/" rel="next" title="Map">
-                <i class="fa fa-chevron-left"></i> Map
+              <a href="/2020/06/18/computerNetwork/" rel="next" title="Computer Network">
+                <i class="fa fa-chevron-left"></i> Computer Network
               </a>
             
           </div>
@@ -488,8 +456,8 @@ public class TestStream {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/21/servlet/" rel="prev" title="Servlet 执行原理">
-                Servlet 执行原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/21/OSI/" rel="prev" title="OSI structure">
+                OSI structure <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -654,7 +622,7 @@ public class TestStream {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字节流"><span class="nav-number">1.</span> <span class="nav-text">字节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符流"><span class="nav-number">2.</span> <span class="nav-text">字符流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文问题"><span class="nav-number">3.</span> <span class="nav-text">中文问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内部类"><span class="nav-number">1.</span> <span class="nav-text">Java内部类</span></a></li></ol></div>
             
 
           </div>
